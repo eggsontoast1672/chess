@@ -1,2 +1,9 @@
-/chess/__pycache__
-/venv
+# Language server files
+.cache
+compile_commands.json
+
+# Output files
+chess.exe
+*.o
+
+__pycache__
