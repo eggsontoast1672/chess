@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
-      run: sudo apt update; sudo apt install libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev
+      run: sudo apt update; sudo apt install libgl-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev
     - name: Build
       run: cargo build --verbose
     - name: Run tests
