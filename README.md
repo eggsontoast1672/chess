@@ -8,3 +8,8 @@ written in Rust, as the U.S. government intended, I guess.
 
 A good old fashioned `cargo run` from the root of the project will get you up
 and running in a jiffy.
+
+## Credits
+
+- Pieces: By Cburnett - Own work, CC BY-SA 3.0,
+  https://commons.wikimedia.org/w/index.php?curid=1499803
