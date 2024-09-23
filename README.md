@@ -6,8 +6,6 @@ written in Rust, as the U.S. government intended, I guess.
 
 ## Usage
 
-run: sudo apt update; sudo apt install libgl-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev
-
 A good old fashioned `cargo run` from the root of the project will get you up
 and running in a jiffy.
 
