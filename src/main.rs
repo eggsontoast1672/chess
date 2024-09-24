@@ -4,11 +4,8 @@ use raylib::prelude::*;
 // Dark:    0xb58863
 // Light:   0xf0d9b5
 
-const SCREEN_WIDTH: i32 = 800;
-const SCREEN_HEIGHT: i32 = 800;
-
-const CELL_WIDTH: i32 = SCREEN_WIDTH / 8;
-const CELL_HEIGHT: i32 = SCREEN_HEIGHT / 8;
+const SCREEN_SIZE: f32 = 700.0;
+const CELL_SIZE: f32 = SCREEN_SIZE / 8.0;
 
 fn draw_board(d: &mut RaylibDrawHandle) {
     for x in 0..8 {
@@ -19,11 +16,13 @@ fn draw_board(d: &mut RaylibDrawHandle) {
                 Color::new(0xb5, 0x88, 0x63, 0xff)
             };
 
-            d.draw_rectangle(
-                x * CELL_WIDTH,
-                y * CELL_HEIGHT,
-                CELL_WIDTH,
-                CELL_HEIGHT,
+            d.draw_rectangle_rec(
+                Rectangle {
+                    x: x as f32 * CELL_SIZE,
+                    y: y as f32 * CELL_SIZE,
+                    width: CELL_SIZE,
+                    height: CELL_SIZE,
+                },
                 color,
             );
         }
@@ -32,7 +31,7 @@ fn draw_board(d: &mut RaylibDrawHandle) {
 
 fn main() {
     let (mut rl, thread) = raylib::init()
-        .size(SCREEN_WIDTH, SCREEN_HEIGHT)
+        .size(SCREEN_SIZE as i32, SCREEN_SIZE as i32)
         .title("Chess")
         .build();
 
