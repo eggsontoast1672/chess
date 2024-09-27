@@ -74,6 +74,31 @@ impl Square {
     }
 }
 
+fn parse_board_pieces(fen: &str) -> Option<[Option<Piece>; 64]> {
+    let mut pieces = [const { None }; 64];
+    let mut position = 0;
+    for rank in fen.split('/') {
+        for c in rank.chars() {
+            match c.to_digit(10) {
+                Some(amount_to_skip) => {
+                    for _ in 0..amount_to_skip {
+                        position += 1;
+                    }
+                }
+                None => {
+                    let piece = Piece::from_char(c);
+                    if piece.is_none() {
+                        return None;
+                    }
+                    pieces[position] = piece;
+                    position += 1;
+                }
+            }
+        }
+    }
+    Some(pieces)
+}
+
 struct Board {
     pieces: [Option<Piece>; 64],
     side_to_move: PieceColor,
@@ -81,6 +106,13 @@ struct Board {
     en_passant_target: Option<Square>,
     halfmove_clock: u8,
     fullmove_count: u16,
+}
+
+impl Board {
+    fn from_fen(fen: &str) -> Option<Board> {
+        let mut parts_iter = fen.split_whitespace();
+        todo!()
+    }
 }
 
 impl std::str::FromStr for Board {
